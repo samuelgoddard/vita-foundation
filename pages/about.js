@@ -65,7 +65,7 @@ export default function About() {
                   <li>To advance networking, linkage and peer support for health professionals, multi-disciplinary public health professionals and other stakeholders (including experts by lived experience) working in the challenging arenas of human trafficking, exploitation and associated social injustices.</li>
                 </ol>
 
-                <small className="mb-3 text-black/70 block leading-tight">* "Health" is considered in line with the World Health Organisation definition as "a state of complete physical, mental and social well-being and not merely the absence of disease or infirmity". The enjoyment of the highest attainable standard of health is one of the fundamental rights of every human being without distinction of race, religion, political belief, economic or social condition.</small>
+                <small className="mb-3 text-black/70 block leading-tight">* &quot;Health&quot; is considered in line with the World Health Organisation definition as &quot;a state of complete physical, mental and social well-being and not merely the absence of disease or infirmity&quot;. The enjoyment of the highest attainable standard of health is one of the fundamental rights of every human being without distinction of race, religion, political belief, economic or social condition.</small>
 
                 <small className="text-black/70 block leading-tight">** Including but not limited to poverty, racism and other forms of discrimination, violence and abuse, refugee, migrant and asylum seeking, experience of state care and other health developmental and social vulnerabilities.</small>
               </div>
