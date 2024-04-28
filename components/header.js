@@ -8,11 +8,11 @@ import { LazyMotion, domAnimation, m, AnimatePresence } from 'framer-motion'
 
 export default function Header() {
   const [activeNav, setActiveNav] = useState(null)
+  const [mobileNavOpen, setMobileNavOpen] = useState(null)
   const { asPath } = useRouter()
-
   return (
     <LazyMotion features={domAnimation}>
-      <header className={`py-4 md:py-5 xl:py-6 absolute top-0 left-0 right-0 w-full z-50 ${asPath !== '/' && 'border-b border-white/10'}`}>
+      <header className={`py-4 md:py-5 xl:py-6 absolute top-0 left-0 right-0 w-full z-[100] ${asPath !== '/' && 'border-b border-white/10'}`}>
         <Container>
           <nav className="flex flex-wrap w-full items-center">
             <div className="mr-12">
@@ -79,11 +79,91 @@ export default function Header() {
             </ul>
 
             <div className="flex space-x-3 ml-auto">
-              <Btn href="/" intent="primary">Sign up</Btn>
-              <Btn href="/" intent="secondary">Donate</Btn>
+              <Btn href="/" intent="primary" className="hidden lg:block">Sign up</Btn>
+              <Btn href="/" intent="secondary" className="hidden lg:inline-block">Donate</Btn>
+              <button onClick={() => setMobileNavOpen(!mobileNavOpen)} className="bg-red text-white shadow-md text-center px-3 md:px-4 xl:px-5 py-2 text-sm md:text-base rounded-md font-semibold outline-none focus-visible:outline-white focus-visible:outline-2 focus-visible:outline-dashed focus-visible:outline-offset-5 flex items-center lg:hidden"><span className="mr-1">&equiv;</span>Menu</button>
             </div>
           </nav>
         </Container>
+        
+        <AnimatePresence>
+          { mobileNavOpen && (
+            <>
+              <m.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                className="fixed inset-6 bg-black z-[101] rounded-md p-4 flex flex-col h-[calc(100dvh-48px)] lg:hidden"
+              >
+                <div className="absolute top-4 right-4 z-10">
+                  <button onClick={() => setMobileNavOpen(!mobileNavOpen)} className="bg-red text-white shadow-md text-center px-3 md:px-4 xl:px-5 py-2 text-sm md:text-base rounded-md font-semibold outline-none focus-visible:outline-white focus-visible:outline-2 focus-visible:outline-dashed focus-visible:outline-offset-5 flex items-center lg:hidden"><span className="mr-1">&#10005;</span>Close</button>
+                </div>
+
+                <nav className="flex-1 overflow-scroll scroll-hide pb-24">
+                  <ul className="">
+                    <li className={"block relative pb-3 first-of-type:pt-4"}>
+                      <FancyLink
+                        href="/"
+                        ariaLabel={`Navigate to the Home page`}
+                        className={`block group text-xl mb-2 border-b border-white/10 pb-2 ${asPath == '/' ? 'text-orange' : 'text-white'}`}
+                      >
+                        Home
+                      </FancyLink>
+                    </li>
+                    {nav.map((e,i) => {
+                      return (
+                        <li
+                          key={i}
+                          className={"block relative pb-3 first-of-type:pt-4"}
+                        >
+                          <FancyLink
+                            key={i}
+                            href={e.href}
+                            ariaLabel={`Navigate to the ${e.label} page`}
+                            className={`block group text-xl mb-2 border-b border-white/10 pb-2 ${asPath.includes(e.href) ? 'text-orange' : 'text-white'}`}
+                          >
+                            {e.label}
+                          </FancyLink>
+
+                          {e.children && (
+                            <ul
+                              className={``}
+                            >
+                              {e.children.map((e,i) => {
+                                return (
+                                  <li key={i}>
+                                    <FancyLink
+                                      href={e.href}
+                                      ariaLabel={`Navigate to the ${e.label} page`}
+                                      className="text-white/50 focus-visible:outline-white block text-sm pb-1"
+                                    >
+                                      {e.label}
+                                    </FancyLink>
+                                  </li>        
+                                )
+                              })}
+                            </ul>
+                          )}
+                        </li>
+                      )
+                    })}
+                  </ul>
+                </nav>
+                
+                <div className="absolute bottom-4 left-4 right-4 bg-black border-t border-white/10 pt-5 z-10 space-y-4">
+                  <Btn href="/" intent="primary" className="block w-full">Sign up</Btn>
+                  <Btn href="/" intent="secondary" className="block w-full">Donate</Btn>
+                </div>
+              </m.div>
+              <m.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                className="fixed inset-0 bg-black/40 z-[100] backdrop-blur-sm lg:hidden"
+              ></m.div>
+            </>
+          )}
+        </AnimatePresence>
       </header>
     </LazyMotion>
   )

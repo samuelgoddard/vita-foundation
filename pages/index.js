@@ -28,7 +28,7 @@ export default function Home() {
           <Container className="relative z-10">
             <Pill className="bg-white text-red mb-4 md:mb-6">Training For Healthcare Professionals</Pill>
             
-            <h1 className="font-semibold text-4xl md:text-5xl xl:text-6xl leading-[1.125] w-full md:w-[20ch] mb-4 md:mb-8 xl:mb-10">Advancing the Health Response to Human Trafficking & Exploitation</h1>
+            <h1 className="font-semibold text-[40px] md:text-5xl xl:text-6xl leading-[1.125] w-full md:w-[20ch] mb-4 md:mb-8 xl:mb-10">Advancing the Health Response to Human Trafficking & Exploitation</h1>
             
             <div className="w-full md:w-[50ch] mb-5 md:mb-10">
               <p>VITA Training aims to advance the health response to human trafficking & exploitation, to ensure victims and survivors receive the person-centred, trauma-informed care they deserve.</p>
