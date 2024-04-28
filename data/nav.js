@@ -19,29 +19,32 @@ export const nav = [{
   href: '/training',
   children: [{
     label: 'About our Training',
-    href: '/training',
+    href: '/training#about',
   },{
     label: 'Simulation Training',
-    href: '/training',
+    href: '/training#simulation-training',
   },{
     label: 'Seminar Training',
-    href: '/training',
+    href: '/training#seminar-training',
   },{
     label: 'Interactive Webinar',
-    href: '/training',
+    href: '/training#interactive-webinar',
   },{
     label: 'Testimonials',
     href: '/training',
+  },{
+    label: 'Book Now',
+    href: '/training#contact',
   }]
 },{
   label: 'Vita Network',
   href: '/network',
   children: [{
     label: 'About our Network',
-    href: '/network',
+    href: '/network#about',
   },{
     label: 'Get Involved',
-    href: '/network',
+    href: '/network#get-involved',
   }]
 },{
   label: 'Resources',

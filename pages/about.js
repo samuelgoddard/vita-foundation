@@ -6,6 +6,7 @@ import TeamMember from '@/components/teamMember'
 import FancyLink from '@/components/fancyLink'
 import ContactCta from '@/components/contactCta'
 import Hero from '@/components/hero'
+import { team } from '@/data/about'
 
 export default function About() {
   return (
@@ -133,14 +134,13 @@ export default function About() {
             </div>
 
             <div className="w-full grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 gap-y-8 md:gap-6 md:gap-y-10 lg:gap-8 lg:gap-y-12">
-              {[...Array(10)].map((e,i) => {
+              {team.map((e,i) => {
                 return (
                   <TeamMember
                     key={i}
-                    i={i+1}
-                    avatar
-                    name="Dr Rosie Riley BSc MBChB"
-                    title="Founder and CEO of VITA"
+                    avatar={e.avatar}
+                    name={e.name}
+                    title={e.title}
                   />
                 )
               })}

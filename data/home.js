@@ -9,7 +9,7 @@ export const statCards = [{
   text: <p><strong>1 in 8 healthcare professionals</strong> reported previous contact with a patient they knew or suspected of having been trafficked.</p>
 },{
   pill: '8 in 10',
-  text: <p><strong>8 in 10 healthcare professionals</strong> felt they hadn’t had enough training.</p>
+  text: <p><strong>8 in 10 healthcare professionals</strong> felt they hadn't had enough training.</p>
 },{
   pill: '95%',
   text: <p><strong>95% of healthcare professionals</strong> were unaware of the scale of human trafficking in the UK.</p>

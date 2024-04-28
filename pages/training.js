@@ -24,7 +24,7 @@ export default function Training() {
           <Container>
             <nav>
               <ul className="md:flex md:space-x-6 lg:space-x-8 xl:space-x-12">
-                <li><FancyLink className="text-xs lg:text-base block font-semibold" href="#aims">About</FancyLink></li>
+                <li><FancyLink className="text-xs lg:text-base block font-semibold" href="#about">About</FancyLink></li>
                 <li><FancyLink className="text-xs lg:text-base block font-semibold" href="#simulation-training">Simulation Training</FancyLink></li>
                 <li><FancyLink className="text-xs lg:text-base block font-semibold" href="#seminar-training">Seminar Training With Video</FancyLink></li>
                 <li><FancyLink className="text-xs lg:text-base block font-semibold" href="#interactive-webinar">Interactive Webinar</FancyLink></li>
@@ -35,7 +35,7 @@ export default function Training() {
           </Container>
         </section>
 
-        <section className="bg-white pt-6 py-10 md:py-16 xl:py-28 border-b border-black/10" id="aims">
+        <section className="bg-white pt-6 py-10 md:py-16 xl:py-28 border-b border-black/10" id="about">
           <Container>
             <div className="flex flex-wrap xl:items-center">
               <div className="w-full md:w-1/2 mb-6 md:mb-0 md:pr-12 lg:pr-20 xl:pr-28">

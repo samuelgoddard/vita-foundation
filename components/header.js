@@ -61,7 +61,7 @@ export default function Header() {
                                     <FancyLink
                                       href={e.href}
                                       ariaLabel={`Navigate to the ${e.label} page`}
-                                      className="text-black/50 focus-visible:outline-black block mb-1 md:mb-2 text-sm md:text-base"
+                                      className="text-black/70 focus-visible:outline-black block mb-1 md:mb-2 text-sm md:text-base"
                                     >
                                       {e.label}
                                     </FancyLink>
@@ -79,8 +79,8 @@ export default function Header() {
             </ul>
 
             <div className="flex space-x-3 ml-auto">
-              <Btn href="/" intent="primary" className="hidden lg:block">Sign up</Btn>
-              <Btn href="/" intent="secondary" className="hidden lg:inline-block">Donate</Btn>
+              <Btn href="https://mailchi.mp/55437799748c/sign-up" external intent="primary" className="hidden lg:block">Sign up</Btn>
+              <Btn href="https://example.com" external intent="secondary" className="hidden lg:inline-block">Donate</Btn>
               <button onClick={() => setMobileNavOpen(!mobileNavOpen)} className="bg-red text-white shadow-md text-center px-3 md:px-4 xl:px-5 py-2 text-sm md:text-base rounded-md font-semibold outline-none focus-visible:outline-white focus-visible:outline-2 focus-visible:outline-dashed focus-visible:outline-offset-5 flex items-center lg:hidden"><span className="mr-1">&equiv;</span>Menu</button>
             </div>
           </nav>
@@ -99,7 +99,7 @@ export default function Header() {
                   <button onClick={() => setMobileNavOpen(!mobileNavOpen)} className="bg-red text-white shadow-md text-center px-3 md:px-4 xl:px-5 py-2 text-sm md:text-base rounded-md font-semibold outline-none focus-visible:outline-white focus-visible:outline-2 focus-visible:outline-dashed focus-visible:outline-offset-5 flex items-center lg:hidden"><span className="mr-1">&#10005;</span>Close</button>
                 </div>
 
-                <nav className="flex-1 overflow-scroll scroll-hide pb-24">
+                <nav className="flex-1 overflow-scroll scroll-hide pb-40 relative">
                   <ul className="">
                     <li className={"block relative pb-3 first-of-type:pt-4"}>
                       <FancyLink
@@ -151,10 +151,11 @@ export default function Header() {
                 </nav>
                 
                 <div className="absolute bottom-4 left-4 right-4 bg-black border-t border-white/10 pt-5 z-10 space-y-4">
-                  <Btn href="/" intent="primary" className="block w-full">Sign up</Btn>
-                  <Btn href="/" intent="secondary" className="block w-full">Donate</Btn>
+                  <Btn href="https://mailchi.mp/55437799748c/sign-up" external intent="primary" className="block w-full">Sign up</Btn>
+                  <Btn href="https://example.com" external intent="secondary" className="block w-full">Donate</Btn>
                 </div>
               </m.div>
+
               <m.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
