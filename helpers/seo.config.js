@@ -1,12 +1,12 @@
 export default {
-  defaultTitle: 'Boilerplate | Next x Tailwind x Motion',
-  description: 'A simple Next.js starter kit with Tailwind and Framer Motion.',
-  titleTemplate: '%s | Next x Tailwind x Motion',
+  defaultTitle: 'VITA Foundation | Advancing the Health Response to Human Trafficking & Exploitation',
+  description: 'VITA Training aims to advance the health response to human trafficking & exploitation, to ensure victims and survivors receive the person-centred, trauma-informed care they deserve.',
+  titleTemplate: '%s | VITA Foundation',
   openGraph: {
     type: 'website',
     locale: 'en_GB',
-    url: 'https://sg-next-tailwind-motion.vercel.app/',
-    site_name: 'Next x Tailwind x Motion',
+    url: 'https://vita-foundation.vercel.app/',
+    site_name: 'VITA Foundation',
   },
   twitter: {
     handle: '@samuelgoddard',

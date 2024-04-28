@@ -1,18 +1,106 @@
-/* Webfonts */
-@import '_fonts.css';
-
-/* Tailwind base/components */
 @import 'tailwindcss/base';
 @import 'tailwindcss/components';
-
-/* Custom Style Imports */
-@import '_typography.css';
-
-/* Tailwind Utilities */
 @import 'tailwindcss/utilities';
 
-
-/* Simple defaults */
 body {
-  @apply font-sans antialiased text-black bg-white;
+  @apply font-sans antialiased text-black bg-white overscroll-none;
+}
+
+html {
+  @apply scroll-smooth;
+}
+
+.content {
+  & > p {
+    @apply mb-5 last-of-type:mb-0;
+  }
+
+  & > p > a {
+    @apply underline text-red font-semibold outline-none focus-visible:outline-current focus-visible:outline-2 focus-visible:outline-dashed;
+  }
+
+  & > h1, & > .h1 {
+    @apply text-3xl md:text-4xl;
+  }
+
+  & > h2, & > .h2 {
+    @apply text-2xl md:text-3xl;
+  }
+}
+
+
+.fancy-ol {
+  counter-reset: lt 0;
+
+  & > li {
+    @apply relative pl-10 md:pl-12 lg:pl-16 mb-4 md:mb-8 lg:mb-10;
+    counter-increment: lt;
+
+    &:before {
+      content: counter(lt);
+      @apply absolute top-1 left-0 w-6 md:w-8 lg:w-10 h-6 md:h-8 lg:h-10 rounded-full font-semibold text-white bg-red flex items-center justify-center text-sm md:text-base lg:text-lg;
+    }
+
+    &:nth-of-type(1) {
+      &:before {
+        @apply bg-red;
+      }
+    }
+
+    &:nth-of-type(2) {
+      &:before {
+        @apply bg-[#FF130D];
+      }
+    }
+
+    &:nth-of-type(3) {
+      &:before {
+        @apply bg-[#FF820D];
+      }
+    }
+    &:nth-of-type(4) {
+      &:before {
+        @apply bg-[#FF5100];
+      }
+    }
+    &:nth-of-type(5) {
+      &:before {
+        @apply bg-[#FF130D];
+      }
+    }
+    &:nth-of-type(6) {
+      &:before {
+        @apply bg-red;
+      }
+    }
+
+    &:nth-of-type(7) {
+      &:before {
+        @apply bg-[#FF130D];
+      }
+    }
+
+    &:nth-of-type(8) {
+      &:before {
+        @apply bg-[#FF820D];
+      }
+    }
+    &:nth-of-type(9) {
+      &:before {
+        @apply bg-[#FF5100];
+      }
+    }
+    &:nth-of-type(10) {
+      &:before {
+        @apply bg-[#FF130D];
+      }
+    }
+  }
+}
+
+.letter-wrap {
+  @apply bg-red text-white inline p-1;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+
 }

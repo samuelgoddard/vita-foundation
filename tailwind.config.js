@@ -18,14 +18,14 @@ module.exports = {
     },
     extend: {
       colors: {
-        'black': '#000',
+        'black': '#1D1D1B',
         'white': '#FFF',
-        'example-color': {
-          light: '#ffb288',
-          DEFAULT: '#d18d67',
-          dark: '#ce8860',
-        },
-      }
+        'red': '#AB0033',
+        'orange': '#FF820D'
+      },
+      fontFamily: {
+        sans: ['var(--font-inter)'],
+      },
     },
   },
   plugins: []
