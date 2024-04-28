@@ -138,6 +138,7 @@ export default function About() {
                 return (
                   <TeamMember
                     key={i}
+                    i={i+1}
                     avatar={e.avatar}
                     name={e.name}
                     title={e.title}
