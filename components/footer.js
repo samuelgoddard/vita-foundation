@@ -15,13 +15,13 @@ export default function Footer() {
                 <p>For more information or to see how you can get involved, contact the VITA team.</p>
               </div>
               <div className="w-full md:w-auto md:ml-auto">
-                <Btn href="/" intent="primary" className="block md:inline-block w-full md:w-auto focus-visible:outline-red">Contact Us</Btn>
+                <Btn href="/about#contact" intent="primary" className="block md:inline-block w-full md:w-auto focus-visible:outline-red">Contact Us</Btn>
               </div>
             </div>
           </div>
 
           <div className="p-5 md:p-6 xl:p-8 text-sm md:text-base rounded-md shadow-md bg-black w-full md:w-[30%] md:max-w-[250px] flex items-center">
-            <Btn href="/" intent="secondary" className="block w-full">Get Urgent Help</Btn>
+            <Btn href="https://example.com" external intent="secondary" className="block w-full">Get Urgent Help</Btn>
           </div>
         </div>
 
