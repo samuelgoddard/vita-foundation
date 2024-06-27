@@ -1,16 +1,26 @@
-import Layout from '@/components/layout'
-import Container from '@/components/container'
 import { NextSeo } from 'next-seo'
 import Image from 'next/image'
+
+import Layout from '@/components/layout'
+import Container from '@/components/container'
 import Pill from '@/components/pill'
 import Btn from '@/components/btn'
 import Card from '@/components/card'
+
 import { statCards } from '@/data/home'
 
-export default function Home() {
+import { homeQuery } from '@/helpers/queries'
+import SanityPageService from '@/services/sanityPageService'
+
+const pageService = new SanityPageService(homeQuery)
+
+
+export default function Home(initialData) {
+  const { data: { home, company }  } = pageService.getPreviewHook(initialData)()
+
   return (
     <Layout>
-      <NextSeo title="Home" />
+      <NextSeo title={home.title} />
       
       <article>
         <section className="bg-red text-white pt-40 md:pt-48 xl:pt-56 pb-8 md:pb-16 xl:pb-28 relative overflow-hidden">
@@ -26,13 +36,15 @@ export default function Home() {
           </div>
 
           <Container className="relative z-10">
-            <Pill className="bg-white text-red mb-4 md:mb-6">Training For Healthcare Professionals</Pill>
+            <Pill className="bg-white text-red mb-4 md:mb-6">{home.hero.heroTagline}</Pill>
             
-            <h1 className="font-semibold text-[40px] md:text-5xl xl:text-6xl leading-[1.125] w-full md:w-[20ch] mb-4 md:mb-8 xl:mb-10">Advancing the Health Response to Human Trafficking & Exploitation</h1>
+            <h1 className="font-semibold text-[40px] md:text-5xl xl:text-6xl leading-[1.125] w-full md:w-[20ch] mb-4 md:mb-8 xl:mb-10">{home.hero.heroHeading}</h1>
             
-            <div className="w-full md:w-[50ch] mb-5 md:mb-10">
-              <p>VITA Training aims to advance the health response to human trafficking & exploitation, to ensure victims and survivors receive the person-centred, trauma-informed care they deserve.</p>
-            </div>
+            {home.hero.heroText && (
+              <div className="w-full md:w-[50ch] mb-5 md:mb-10">
+                <p>{home.hero.heroText}</p>
+              </div>
+            )}
 
             <div className="md:flex md:space-x-3 space-y-3 md:space-y-0 ml-auto">
               <Btn href="/network" intent="secondary" className="w-full block md:inline-block md:w-auto">Vita Network</Btn>
@@ -125,4 +137,12 @@ export default function Home() {
       </article>
     </Layout>
   )
+}
+
+
+export async function getStaticProps(context) {
+  const props = await pageService.fetchQuery(context)
+  return { 
+    props: props
+  };
 }

@@ -5,15 +5,15 @@ import Hero from '@/components/hero'
 import Btn from '@/components/btn'
 import ContactCta from '@/components/contactCta'
 
-export default function Resources() {
+export default function Article() {
   return (
     <Layout>
-      <NextSeo title="Resources" />
+      <NextSeo title="Article" />
       
       <article>
         <Hero
-          pill="Training For Healthcare Professionals"
-          heading="VITA Resources"
+          pill="02/05/2024"
+          heading="Example Blog Post Title"
         />
 
         <section className="bg-white pt-6 py-10 md:py-16 xl:py-28 border-b border-black/10">
@@ -28,7 +28,7 @@ export default function Resources() {
                   <p>Our blog guidelines and confidentiality information can be found here.</p>
                 </div>
 
-                <Btn href="/article" intent="primary">View Blog</Btn>
+                <Btn href="/" intent="primary">View Blog</Btn>
               </div>
 
               <div className="col-span-1 mb-5 md:mb-10 lg:mb-16">
@@ -49,7 +49,7 @@ export default function Resources() {
                   </ul>
                 </div>
 
-                <Btn href="/article" intent="primary">View Resources</Btn>
+                <Btn href="/" intent="primary">View Resources</Btn>
               </div>
 
               <div className="col-span-1 mb-5 md:mb-10 lg:mb-16">
