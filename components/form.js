@@ -1,6 +1,6 @@
 export default function Form({ className }) {
   return(
-    <form className={`p-5 md:p-6 xl:p-8 text-sm md:text-base rounded-md bg-[#F5F2F1]`}>
+    <form className={`p-5 md:p-6 xl:p-8 text-sm md:text-base rounded-md bg-[#F5F2F1] border border-red/10`}>
       <div className="grid grid-cols-2 gap-x-6 gap-y-3 md:gap-y-5">
         <div className="col-span-2 lg:col-span-1">
           <p>
@@ -108,7 +108,7 @@ export default function Form({ className }) {
         </div>
 
         <div className="col-span-1">
-          <button type="submit" className="bg-red text-white inline-block shadow-md text-center px-3 md:px-4 xl:px-5 py-2 text-sm md:text-base rounded-md font-semibold outline-none focus-visible:outline-red focus-visible:outline-2 focus-visible:outline-dashed focus-visible:outline-offset-5">Send Enquiry</button>
+          <button type="submit" className="bg-red hover:bg-black text-white inline-block shadow-md text-center px-3 md:px-4 xl:px-5 py-2 text-sm md:text-base rounded-md font-semibold outline-none focus-visible:outline-red focus-visible:outline-2 focus-visible:outline-dashed focus-visible:outline-offset-5">Send Enquiry</button>
         </div>
         
         <div className="col-span-1 text-black/50 text-right self-end">

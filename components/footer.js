@@ -1,14 +1,17 @@
-import Container from '@/components/container'
-import Btn from './btn'
-import { nav } from '@/data/nav'
-import FancyLink from './fancyLink'
+import slugify from 'slugify'
 
-export default function Footer() {
+import Container from '@/components/container'
+import Btn from '@/components/btn'
+import FancyLink from '@/components/fancyLink'
+
+import { nav } from '@/data/nav'
+
+export default function Footer({ aboutNav, trainingNav, networkNav }) {
   return (
     <footer className="bg-[#F5F2F1]">
       <Container className="relative overflow-hidden py-6 md:py-16 lg:py-24">
         <div className="flex flex-wrap w-full md:space-x-8 relative z-10">
-          <div className="p-5 md:p-6 xl:p-8 text-sm md:text-base rounded-md shadow-md bg-white w-full md:flex-1 mb-4 md:mb-0">
+          <div className="p-5 md:p-6 xl:p-8 text-sm md:text-base rounded-md shadow-md bg-white w-full md:flex-1 mb-4 md:mb-0 border border-black/10">
             <div className="flex flex-wrap md:flex-nowrap items-center">
               <div className="w-full md:flex-1 mb-4 md:mb-0 md:pr-8">
                 <p className="text-red text-base md:text-lg mb-1"><strong>Get in Touch</strong></p>
@@ -34,6 +37,14 @@ export default function Footer() {
           
           <ul className="flex flex-wrap lg:space-x-[5vw] lg:ml-auto w-full xl:w-auto">
             {nav.map((e,i) => {
+              let currentNav = null
+              let showContact = true
+              let prefix = '#'
+
+              e.href == '/about' && (currentNav = aboutNav, prefix = '/about#')
+              e.href == '/training' && (currentNav = trainingNav, prefix = '/training#')
+              e.href == '/resources' && (currentNav = null, showContact = false)
+
               return (
                 <li key={i} className="px-2 block w-1/2 md:w-1/4 lg:w-auto mb-5">
                   <FancyLink
@@ -45,7 +56,7 @@ export default function Footer() {
                   </FancyLink>
                   {e.children && (
                     <ul>
-                      {e.children.map((e,i) => {
+                      {/* {e.children.map((e,i) => {
                         return (
                           <li key={i}>
                             <FancyLink
@@ -57,7 +68,55 @@ export default function Footer() {
                             </FancyLink>
                           </li>        
                         )
-                      })}
+                      })} */}
+
+
+
+                      {currentNav !== null ? (
+                        <>
+                        {currentNav.map((e,i) => {
+                          return (
+                            <li key={i}>
+                              <FancyLink
+                                href={`${prefix}${slugify(e.label, { lower: true, strict: true })}`}
+                                ariaLabel={`Navigate to the ${e.label} page: ${e.label} section`}
+                                className="text-black/50 focus-visible:outline-black block mb-1 md:mb-2 text-sm md:text-base"
+                              >
+                                {e.label}
+                              </FancyLink>
+                            </li>
+                          )
+                        })}
+                        </>
+                      ) : (
+                        <>
+                          {e.children.map((e,i) => {
+                            return (
+                              <li key={i}>
+                                <FancyLink
+                                  href={e.href}
+                                  ariaLabel={`Navigate to the ${e.label} page`}
+                                  className="text-black/50 focus-visible:outline-black block mb-1 md:mb-2 text-sm md:text-base"
+                                >
+                                  {e.label}
+                                </FancyLink>
+                              </li>
+                            )
+                          })}
+                        </>
+                      )}
+                      
+                      {showContact && (
+                        <li>
+                          <FancyLink
+                            href={`${prefix}contact`}
+                            ariaLabel={`Navigate to the ${e.label} page: contact section`}
+                            className="text-black/50 focus-visible:outline-black block mb-1 md:mb-2 text-sm md:text-base"
+                          >
+                            Contact
+                          </FancyLink>
+                        </li>
+                      )}
                     </ul>
                   )}
                 </li>

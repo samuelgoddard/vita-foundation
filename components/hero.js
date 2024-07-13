@@ -1,18 +1,24 @@
 import Container from "./container";
 import Pill from "./pill";
 
-export default function Hero({ media, pill, heading }) {
+export default function Hero({ media, pill, heading, text, wide }) {
   return(
-    <section className="bg-black text-white relative overflow-hidden">
+    <section id="hero" className="bg-black text-white relative overflow-hidden">
       <Container className="relative z-10 pt-40 md:pt-48 xl:pt-56 pb-5 md:pb-10 lg:pb-20 xl:pb-28">
         <div className="flex flex-wrap items-center">
-          <div className="w-full lg:w-[55%] md:pr-8">
+          <div className={`w-full md:pr-8 ${wide ? 'lg:w-[75%]' : 'lg:w-[55%]' }`}>
             {pill && (
-              <Pill className="bg-white text-red mb-4 md:mb-6">{pill}</Pill>
+              <Pill className="bg-white text-red mb-4 md:mb-6 select-red">{pill}</Pill>
             )}
             
             {heading && (
               <h1 className={`font-semibold text-[40px] md:text-5xl xl:text-6xl leading-[1.125] w-full ${media && 'mb-6 lg:mb-0'}`}>{heading}</h1>
+            )}
+
+            {text && (
+              <div className="content mt-4 md:mt-6 md:w-10/12">
+                <p>{text}</p>
+              </div>
             )}
           </div>
       

@@ -4,7 +4,9 @@ import { useRouter } from 'next/router'
 import { DefaultSeo } from 'next-seo'
 import { Inter } from 'next/font/google'
 
+import { InPageNavContext } from '@/context/inPageNav'
 import SEO from '@/helpers/seo.config';
+import { useState } from 'react'
 
 const inter = Inter({
   subsets: ['latin'],
@@ -13,9 +15,10 @@ const inter = Inter({
 
 export default function App({ Component, pageProps }) {
   const router = useRouter()
+  const [inPageNavContext, setInPageNavContext] = useState(null);
 
   return (
-    <>
+    <InPageNavContext.Provider value={[inPageNavContext, setInPageNavContext]}>
       <DefaultSeo {...SEO} /> 
 
       <div className={`${inter.variable} font-sans`}>
@@ -37,6 +40,6 @@ export default function App({ Component, pageProps }) {
           </a>
         </div>
       )}
-    </>
+    </InPageNavContext.Provider>
   )
 }

@@ -1,18 +1,21 @@
-import FancyLink from '@/components/fancyLink'
-import Container from '@/components/container'
-import Btn from '@/components/btn'
-import { nav } from '@/data/nav'
 import { useState } from 'react'
 import { useRouter } from 'next/router'
 import { LazyMotion, domAnimation, m, AnimatePresence } from 'framer-motion'
+import slugify from 'slugify'
 
-export default function Header() {
+import FancyLink from '@/components/fancyLink'
+import Container from '@/components/container'
+import Btn from '@/components/btn'
+
+import { nav } from '@/data/nav'
+
+export default function Header({ aboutNav, trainingNav, networkNav }) {
   const [activeNav, setActiveNav] = useState(null)
   const [mobileNavOpen, setMobileNavOpen] = useState(null)
   const { asPath } = useRouter()
   return (
     <LazyMotion features={domAnimation}>
-      <header className={`py-4 md:py-5 xl:py-6 absolute top-0 left-0 right-0 w-full z-[100] ${asPath !== '/' && 'border-b border-white/10'}`}>
+      <header className={`py-4 md:py-5 xl:py-6 absolute top-0 left-0 right-0 w-full z-[100] ${asPath !== '/' ? 'border-b border-white/10 select-red' : 'select-white'  }`}>
         <Container>
           <nav className="flex flex-wrap w-full items-center">
             <div className="mr-12">
@@ -23,6 +26,14 @@ export default function Header() {
             
             <ul className="hidden lg:flex lg:space-x-3">
               {nav.map((e,i) => {
+                let currentNav = null
+                let showContact = true
+                let prefix = '#'
+
+                e.href == '/about' && (currentNav = aboutNav, prefix = '/about#')
+                e.href == '/training' && (currentNav = trainingNav, prefix = '/training#')
+                e.href == '/resources' && (currentNav = null, showContact = false)
+
                 return (
                   <li
                     key={i}
@@ -41,7 +52,9 @@ export default function Header() {
                       <div className="flex flex-wrap items-center">
                         {e.label}
                         
-                        <svg className="w-5 ml-1" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 25"><g clipPath="url(#a)"><path stroke="currentColor" strokeLinejoin="round" d="m4 8.392 8 8 8-8"/></g><defs><clipPath id="a"><path fill="#fff" d="M0 .392h24v24H0z"/></clipPath></defs></svg>
+                        {(currentNav?.length > 0 || e.children?.length) && (
+                          <svg className="w-5 ml-1" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 25"><g clipPath="url(#a)"><path stroke="currentColor" strokeLinejoin="round" d="m4 8.392 8 8 8-8"/></g><defs><clipPath id="a"><path fill="#fff" d="M0 .392h24v24H0z"/></clipPath></defs></svg>
+                        )}
                       </div>
                     </FancyLink>    
 
@@ -55,19 +68,50 @@ export default function Header() {
                               exit={{ opacity: 0 }}
                               className={`absolute top-0 translate-y-12 rounded-md p-4 left-0 bg-white w-[250px] shadow-md`}
                             >
-                              {e.children.map((e,i) => {
+                            {currentNav !== null ? (
+                              <>
+                              {currentNav.map((e,i) => {
                                 return (
                                   <li key={i}>
                                     <FancyLink
-                                      href={e.href}
-                                      ariaLabel={`Navigate to the ${e.label} page`}
+                                      href={`${prefix}${slugify(e.label, { lower: true, strict: true })}`}
+                                      ariaLabel={`Navigate to the ${e.label} page: ${e.label} section`}
                                       className="text-black/70 focus-visible:outline-black block mb-1 md:mb-2 text-sm md:text-base"
                                     >
                                       {e.label}
                                     </FancyLink>
-                                  </li>        
+                                  </li>
                                 )
                               })}
+                              </>
+                            ) : (
+                              <>
+                                {e.children.map((e,i) => {
+                                  return (
+                                    <li key={i}>
+                                      <FancyLink
+                                        href={e.href}
+                                        ariaLabel={`Navigate to the ${e.label} page`}
+                                        className="text-black/70 focus-visible:outline-black block mb-1 md:mb-2 text-sm md:text-base select-white"
+                                      >
+                                        {e.label}
+                                      </FancyLink>
+                                    </li>
+                                  )
+                                })}
+                              </>
+                            )}
+                              {showContact && (
+                                <li>
+                                  <FancyLink
+                                    href={`${prefix}contact`}
+                                    ariaLabel={`Navigate to the ${e.label} page: contact section`}
+                                    className="text-black/70 focus-visible:outline-black block mb-1 md:mb-2 text-sm md:text-base"
+                                  >
+                                    Contact
+                                  </FancyLink>
+                                </li>
+                              )}
                             </m.ul>
                           )}
                         </AnimatePresence>
@@ -129,7 +173,7 @@ export default function Header() {
                             <ul
                               className={``}
                             >
-                              {e.children.map((e,i) => {
+                              {/* {e.children.map((e,i) => {
                                 return (
                                   <li key={i}>
                                     <FancyLink
@@ -141,7 +185,7 @@ export default function Header() {
                                     </FancyLink>
                                   </li>        
                                 )
-                              })}
+                              })} */}
                             </ul>
                           )}
                         </li>

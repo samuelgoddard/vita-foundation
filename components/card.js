@@ -1,7 +1,6 @@
-import Link from 'next/link'
 import cx from 'classnames'
 
-export default function Card( {children, className, stat}) {
+export default function Card({children, className, stat}) {
   return (
     <div
       className={cx(
