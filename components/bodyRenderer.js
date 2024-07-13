@@ -71,19 +71,19 @@ const BodyRenderer = ({ body }) => {
     const args = serializer?.args
     const Wrapper = serializer?.wrapper
     
-    const ref = useRef(null);
-    const isInView = useInView(ref);
+    // const ref = useRef(null);
+    // const isInView = useInView(ref);
 
-    const [inPageNavContext, setInPageNavContext] = useContext(InPageNavContext);
+    // const [inPageNavContext, setInPageNavContext] = useContext(InPageNavContext);
 
-    useEffect(() => {
-      setInPageNavContext(id)
-    }, [isInView])
+    // useEffect(() => {
+    //   setInPageNavContext(id)
+    // }, [isInView])
 
     if (!Component || !serializer) throw new Error(`No serializer implemented for body object: ${type}`)    
     
     return Wrapper ? (
-      <section id={id} ref={ref} key={item._key}>
+      <section id={id}  key={item._key}>
         <Wrapper key={item._key}><Component {...item} {...args} /></Wrapper>
       </section>
     ) : <Component key={item._key} {...item} {...args} />
