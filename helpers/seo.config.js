@@ -7,6 +7,15 @@ export default {
     locale: 'en_GB',
     url: 'https://vita-foundation.vercel.app/',
     site_name: 'VITA Foundation',
+    images: [
+      {
+        url: 'https://vita-foundation.vercel.app/api/og',
+        width: 1200,
+        height: 630,
+        alt: `Vita Foundation`,
+      },
+    ],
+
   },
   twitter: {
     handle: '@samuelgoddard',
