@@ -29,7 +29,13 @@ export default function Header({ aboutNav, trainingNav, networkNav }) {
                 let currentNav = null
                 let showContact = true
                 let prefix = '#'
-
+                let active = 'text-white'
+                
+                asPath.includes(e.href) && (active = 'text-orange')
+                
+                e.href == '/resources' && asPath.includes('/educational-resources') && (active = 'text-orange')
+                e.href == '/resources' && asPath.includes('/blog') && (active = 'text-orange')
+                
                 e.href == '/about' && (currentNav = aboutNav, prefix = '/about#')
                 e.href == '/training' && (currentNav = trainingNav, prefix = '/training#')
                 e.href == '/resources' && (currentNav = null, showContact = false)
@@ -47,7 +53,7 @@ export default function Header({ aboutNav, trainingNav, networkNav }) {
                       key={i}
                       href={e.href}
                       ariaLabel={`Navigate to the ${e.label} page`}
-                      className={`px-2 block group ${asPath.includes(e.href) ? 'text-orange' : 'text-white'}`}
+                      className={`px-2 block group ${active}`}
                     >
                       <div className="flex flex-wrap items-center">
                         {e.label}

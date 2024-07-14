@@ -10,22 +10,22 @@ import Btn from '@/components/btn'
 import ContactCta from '@/components/contactCta'
 
 
-import { educationalLandingQuery } from '@/helpers/queries'
+import { blogLandingQuery } from '@/helpers/queries'
 import SanityPageService from '@/services/sanityPageService'
 import Link from 'next/link'
-import { PortableText } from '@portabletext/react'
 import FancyLink from '@/components/fancyLink'
-const pageService = new SanityPageService(educationalLandingQuery)
+const pageService = new SanityPageService(blogLandingQuery)
 
-export default function Resources(initialData) {
+export default function Blog(initialData) {
   const { data: { articles, company, nav }  } = pageService.getPreviewHook(initialData)()
 
   return (
     <Layout>
-      <NextSeo title="Educational Resources" />
+      <NextSeo title="Blog" />
 
       <Header
         aboutNav={nav.aboutNav.contentBlocks}
+        wide
         trainingNav={nav.trainingNav.trainingTypes}
         network={nav.networkNav}
       />
@@ -33,8 +33,8 @@ export default function Resources(initialData) {
       <main>
         <article>
           <Hero
-            pill="Latest Resources"
-            heading="Educational Resources"
+            pill="Latest News"
+            heading="VITA Blog"
           />
 
           <section className="bg-white border-b border-black/10">
@@ -55,12 +55,14 @@ export default function Resources(initialData) {
                     const date = new Date(e.publishedDate);
 
                     return (
-                      <li className="col-span-1" key={i}><Link className="text-black border border-black/20 flex flex-wrap h-full w-full rounded-md p-3.5 md:p-5 lg:p-6 items-center border-b-black/20 a11y-focus group" href={`/resources/educational/${e.slug.current}`}>
+                      <li className="col-span-1" key={i}><Link className="text-black border border-black/20 flex flex-wrap h-full w-full rounded-md p-3.5 md:p-5 lg:p-6 items-center border-b-black/20 a11y-focus group" href={`/blog/${e.slug.current}`}>
                         <div className="w-full mb-auto pb-6">
                           <span className="block max-w-[80%] text-xl leading-tight md:text-2xl md:leading-tight mb-2 font-semibold">{e.title}</span>
 
                           <div className="flex gap-3 items-center mb-3 md:mb-4 pb-3 md:pb-4 border-b border-black/20">
                             <span className="text-sm flex items-center gap-1"><span className="block w-3.5 text-black/50"><FiCalendar size="auto" /></span> {new Intl.DateTimeFormat('en-GB').format(date)}</span>
+                            
+                            <span className="text-sm flex items-center gap-1"><span className="block w-4 text-black/50"><FiUser size="auto" /></span> {e.author.name}</span>
                           </div>
 
                           <div className="w-full text-black/70 text-sm md:text-base">
@@ -80,13 +82,14 @@ export default function Resources(initialData) {
                     const date = new Date(e.publishedDate);
 
                     return (
-                      <li className="col-span-1" key={i}><Link className="text-black border border-black/20 flex flex-wrap h-full w-full rounded-md p-3.5 md:p-5 lg:p-6 items-center border-b-black/20 a11y-focus group" href={`/resources/educational/${e.slug.current}`}>
+                      <li className="col-span-1" key={i}><Link className="text-black border border-black/20 flex flex-wrap h-full w-full rounded-md p-3.5 md:p-5 lg:p-6 items-center border-b-black/20 a11y-focus group" href={`/blog/${e.slug.current}`}>
                         <div className="w-full mb-auto pb-6">
                           <span className="block max-w-[80%] text-xl leading-tight md:text-2xl md:leading-tight mb-2 font-semibold">{e.title}</span>
 
                           <div className="flex gap-3 items-center mb-3 md:mb-4 pb-3 md:pb-4 border-b border-black/20">
                             <span className="text-sm flex items-center gap-1"><span className="block w-3.5 text-black/50"><FiCalendar size="auto" /></span> {new Intl.DateTimeFormat('en-GB').format(date)}</span>
                             
+                            <span className="text-sm flex items-center gap-1"><span className="block w-4 text-black/50"><FiUser size="auto" /></span> {e.author.name}</span>
                           </div>
 
                           <div className="w-full text-black/70 text-sm md:text-base">

@@ -103,6 +103,18 @@ export const blogLandingQuery = `{
   ${nav}
 }`
 
+export const eventsLandingQuery = `{
+  "events": *[_type == "event"] {
+    title,
+    content,
+    eventDate,
+    ${content},
+    ${slug}
+  },
+  ${company},
+  ${nav}
+}`
+
 export const educationalLandingQuery = `{
   "articles": *[_type == "educationalResources"] {
     title,
@@ -140,6 +152,7 @@ export const articleSlugQuery = `{
   ${nav}
 }`
 
+
 export const educationalArticleSlugQuery = `{
   "article": *[_type == "educationalResources" && slug.current == $slug][0] {
     title,
@@ -151,6 +164,21 @@ export const educationalArticleSlugQuery = `{
     ${content},
     ${slug},
     "next": *[_type == "educationalResources" && slug.current != $slug && (publishedDate > ^.publishedDate)][0] {
+      title,
+      ${slug}
+    }
+  },
+  ${company},
+  ${nav}
+}`
+
+export const eventSlugQuery = `{
+  "event": *[_type == "event" && slug.current == $slug][0] {
+    title,
+    eventDate,
+    ${content},
+    ${slug},
+    "next": *[_type == "event" && slug.current != $slug && (publishedDate > ^.publishedDate)][0] {
       title,
       ${slug}
     }

@@ -50,7 +50,7 @@ export default function Resources(initialData) {
                     <ul className="border-t border-t-black/20">
                       {articles.map((e,i) => {
                         return (
-                          <li key={i}><Link className="text-red hover:text-black font-semibold py-2.5 border-b flex items-center border-b-black/20 a11y-focus" href={`/resources/blog/${e.slug.current}`}>
+                          <li key={i}><Link className="text-red hover:text-black font-semibold py-2.5 border-b flex items-center border-b-black/20 a11y-focus" href={`/blog/${e.slug.current}`}>
                             <span className="block flex-1">{e.title}</span>
                             <span className="w-auto ml-auto pl-6">
                               <svg className="w-4" viewBox="0 0 15 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M8.268 1.152 7.93.785l-.687.726.34.368 5.128 5.555L.984 7.43H.502L.5 8.464h.483l11.853.003-5.322 5.629-.343.363.678.735.344-.363 6.084-6.436c.19-.2.192-.528.004-.73L8.268 1.151Z" fill="currentColor"/></svg>
@@ -61,7 +61,7 @@ export default function Resources(initialData) {
                     </ul>
                   </nav>
 
-                  <Btn href="/resources/blog" intent="primary">View All Blog Podcasts</Btn>
+                  <Btn href="/blog" intent="primary">View All Blog Posts</Btn>
                 </div>
 
                 <div className="col-span-1 border border-black/20 p-4 md:p-6 rounded-md  self-start scroll-mt-6" id="educational">
@@ -88,7 +88,7 @@ export default function Resources(initialData) {
                     <ul className="border-t border-t-black/20">
                       {educationalResources.map((e,i) => {
                         return (
-                          <li key={i}><Link className="text-red hover:text-black font-semibold py-2.5 border-b flex items-center border-b-black/20 a11y-focus" href={`/resources/educational/${e.slug.current}`}>
+                          <li key={i}><Link className="text-red hover:text-black font-semibold py-2.5 border-b flex items-center border-b-black/20 a11y-focus" href={`/educational-resources/${e.slug.current}`}>
                             <span className="block flex-1">{e.title}</span>
                             <span className="w-auto ml-auto pl-6">
                               <svg className="w-4" viewBox="0 0 15 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M8.268 1.152 7.93.785l-.687.726.34.368 5.128 5.555L.984 7.43H.502L.5 8.464h.483l11.853.003-5.322 5.629-.343.363.678.735.344-.363 6.084-6.436c.19-.2.192-.528.004-.73L8.268 1.151Z" fill="currentColor"/></svg>
@@ -99,7 +99,7 @@ export default function Resources(initialData) {
                     </ul>
                   </nav>
 
-                  <Btn href="/resources/educational" intent="primary">View All Educational Resources</Btn>
+                  <Btn href="/educational-resources" intent="primary">View All Educational Resources</Btn>
                 </div>
 
                 <div className="col-span-1 border border-black/20 p-4 md:p-6 rounded-md  self-start scroll-mt-6" id="newsletter">
@@ -125,7 +125,7 @@ export default function Resources(initialData) {
                     <p>We can publicise certain events to our network right here on our website and through social media. We will only publicise events that align with our aim and guiding principles that you can see in About Us.</p>
                   </div>
 
-                  <Btn href="/" intent="primary">View Events</Btn>
+                  <Btn href="/events" intent="primary">View Events</Btn>
                 </div>
 
                 <div className="col-span-1 border border-black/20 p-4 md:p-6 rounded-md scroll-mt-6" id="signposting">

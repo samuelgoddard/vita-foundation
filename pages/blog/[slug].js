@@ -50,7 +50,7 @@ export default function Article(initialData) {
               <Container>
                 <nav>
                   <ul className="md:flex md:space-x-8 lg:space-x-12">
-                    <li><FancyLink className="hover:text-red a11y-focus" href="/resources/blog">← Back to All Blog Posts</FancyLink></li>
+                    <li><FancyLink className="hover:text-red a11y-focus" href="/blog">← Back to All Blog Posts</FancyLink></li>
                   </ul>
                 </nav>
               </Container>
@@ -108,7 +108,7 @@ export default function Article(initialData) {
                   </div>
 
                   {article.next ? (
-                    <Link href={`/resources/blog/${article.next.slug.current}`} className="flex items-end mt-6 lg:mt-12 pt-4 lg:pt-6 border-t border-black/20 hover:text-red focus:text-red a11y-focus">
+                    <Link href={`/blog/${article.next.slug.current}`} className="flex items-end mt-6 lg:mt-12 pt-4 lg:pt-6 border-t border-black/20 hover:text-red focus:text-red a11y-focus">
                       <div className="flex-1">
                         <span className="block text-sm mb-1 text-black/70">Next post</span>
                         <span className="text-2xl leading-tight md:text-3xl md:leading-tight">{article.next.title}</span>
@@ -117,7 +117,7 @@ export default function Article(initialData) {
                       <svg className="w-4 lg:w-6 ml-auto mb-2 lg:mb-1.5" viewBox="0 0 15 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M8.268 1.152 7.93.785l-.687.726.34.368 5.128 5.555L.984 7.43H.502L.5 8.464h.483l11.853.003-5.322 5.629-.343.363.678.735.344-.363 6.084-6.436c.19-.2.192-.528.004-.73L8.268 1.151Z" fill="currentColor"/></svg>
                     </Link>
                   ) : (
-                    <Link href={`/resources/blog`} className="flex items-end mt-6 lg:mt-12 pt-4 lg:pt-6 border-t border-black/20 hover:text-red focus:text-red a11y-focus">
+                    <Link href={`/blog`} className="flex items-end mt-6 lg:mt-12 pt-4 lg:pt-6 border-t border-black/20 hover:text-red focus:text-red a11y-focus">
                       <div className="flex-1">
                         <span className="block text-sm mb-1 text-black/70">Back to</span>
                         <span className="text-2xl leading-tight md:text-3xl md:leading-tight">All Blog Posts</span>

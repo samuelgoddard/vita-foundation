@@ -15,18 +15,23 @@ export const nav = [{
   href: '/resources',
   children: [{
     label: 'Blog',
-    href: '/resources/blog',
+    active: '/resources',
+    href: '/blog',
   },{
     label: 'Educational Resources',
-    href: '/resources/educational',
+    active: '/resources',
+    href: '/educational-resources',
   },{
     label: 'Newsletter',
+    active: '/resources',
     href: '/resources#newsletter',
   },{
     label: 'Events',
+    active: '/resources',
     href: '/resources#events',
   },{
     label: 'Signposting',
+    active: '/resources',
     href: '/resources#signposting',
   }]
 }]
