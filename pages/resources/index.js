@@ -130,10 +130,11 @@ export default function Resources(initialData) {
                     <p>We can publicise certain events to our network right here on our website and through social media. We will only publicise events that align with our aim and guiding principles that you can see in About Us.</p>
                   </div>
                   
-                  {upcomingEvents.length && (
+                  <p className="font-semibold mb-3">Upcoming Events:</p>
+                  
+                  {upcomingEvents.length ? (
                     <nav className="mb-4 md:mb-8">
-                      <p className="font-semibold mb-3">Upcoming Events:</p>
-                      
+                
                       <ul className="border-t border-t-black/20">
                         {upcomingEvents.map((e,i) => {
                           const date = new Date(e.eventDate);
@@ -149,6 +150,8 @@ export default function Resources(initialData) {
                         })}
                       </ul>
                     </nav>
+                  ) : ( 
+                    <p className="border-y mb-4 md:mb-8 border-y-black/20 py-2.5">No upcoming events...</p>
                   )}
 
                   <Btn href="/events" intent="primary">View All Events</Btn>
