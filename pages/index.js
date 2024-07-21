@@ -20,7 +20,23 @@ export default function Home(initialData) {
 
   return (
     <Layout>
-      <NextSeo title={home.title} />
+      <NextSeo
+        title={home.seo?.metaTitle ? home.seo?.metaTitle : home.title}
+        description={home.seo?.metaDesc ? home.seo?.metaDesc : null}
+        openGraph={{
+          title: home.seo?.metaTitle ? home.seo?.metaTitle : home.title,
+          description: home.seo?.metaDesc ? home.seo?.metaDesc : null,
+          images: [
+            {
+              url: `https://vita-foundation.vercel.app/api/og?title=${home.seo?.metaTitle ? home.seo?.metaTitle : home.title}`,
+              width: 1200,
+              height: 630,
+              type: 'image/jpeg',
+            }
+          ]
+        }}
+
+      />
       
       <Header
         aboutNav={nav.aboutNav.contentBlocks}

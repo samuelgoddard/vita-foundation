@@ -14,13 +14,14 @@ import Blockquote from '@/components/blockQuote'
 import SanityImageResponsive from '@/components/sanityImageResponsive'
 import Link from 'next/link'
 import FancyLink from '@/components/fancyLink'
-import { FiCalendar, FiClock, FiUser } from 'react-icons/fi'
+import { FiCalendar, FiAlertCircle } from 'react-icons/fi'
 import Btn from '@/components/btn'
 const pageService = new SanityPageService(eventSlugQuery)
 
 export default function Event(initialData) {
   const { data: { event, company, nav }  } = pageService.getPreviewHook(initialData)()
   const date = new Date(event.eventDate);
+
 
   const myPortableTextComponents = {
     types: {
@@ -37,7 +38,6 @@ export default function Event(initialData) {
         trainingNav={nav.trainingNav.trainingTypes}
         network={nav.networkNav}
       />
-
       <main>
         <article>
           <Hero
@@ -67,7 +67,7 @@ export default function Event(initialData) {
                           <FiCalendar size="50%" className="opacity-50" />
                         </div>
                         <div className="flex-1">
-                          <span className="font-semibold block leading-none">Event Date:</span><span className="block">{new Intl.DateTimeFormat('en-GB').format(date)}</span>
+                          <span className="font-semibold block leading-none">Event Date:</span><span className={`block ${new Intl.DateTimeFormat('en-GB').format(date) < new Intl.DateTimeFormat('en-GB').format(new Date()) && 'line-through'}`}>{new Intl.DateTimeFormat('en-GB').format(date)}</span>
                         </div>
                       </div>
                     </div>
@@ -82,6 +82,13 @@ export default function Event(initialData) {
                 
                 <div className="col-span-12 lg:col-span-6 lg:col-start-4">
                   <div className="w-full content content--blog">
+                    {new Intl.DateTimeFormat('en-GB').format(date) < new Intl.DateTimeFormat('en-GB').format(new Date()) && (
+                      <span className="bg-red/20 border border-red/30 text-red rounded-lg p-3 flex gap-3 items-center text-sm leading-tight">
+                        <span><FiAlertCircle /></span>
+                        <span>Unfortunately, this event is in the past, <Link href="/events">see all upcoming events</Link></span>
+                      </span>
+                    )}
+
                     <PortableText
                       value={event.content}
                       components={myPortableTextComponents}

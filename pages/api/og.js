@@ -19,7 +19,7 @@ export default async function handler(request) {
       // ?title=<title>
       const hasTitle = searchParams.has('title');
       const title = hasTitle
-        ? searchParams.get('title')?.slice(0, 125)
+        ? searchParams.get('title')?.slice(0, 150)
         : 'Advancing the Health Response to Human Trafficking & Exploitation';
 
 
@@ -31,7 +31,7 @@ export default async function handler(request) {
             width: '100%',
             fontFamily: '"Inter"',
           }}
-          tw="bg-[#AB0033] px-14 py-15 relative flex"
+          tw="bg-[#AB0033] px-20 py-22 relative flex"
         >
           <div
             tw="text-white flex flex-col" 

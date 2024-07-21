@@ -1,6 +1,6 @@
 
 // Internal Vars
-const seo = `seo { ..., shareGraphic { asset-> } }`
+const seo = `seo { ... }`
 const image = `
   asset-> { ... },
   hotspot { ... },
@@ -36,9 +36,9 @@ export const homeQuery = `{
   "home": *[_type == "home"][0]{
     title,
     ${hero},
-    ${contentBlocks}
+    ${contentBlocks},
+    ${seo},
   },
-  ${seo},
   ${company},
   ${nav}
 }`
@@ -47,9 +47,9 @@ export const aboutQuery = `{
   "about": *[_type == "about"][0]{
     title,
     ${hero},
-    ${contentBlocks}
+    ${contentBlocks},
+    ${seo},
   },
-  ${seo},
   ${company},
   ${nav}
 }`
@@ -57,9 +57,9 @@ export const aboutQuery = `{
 export const trainingQuery = `{
   "training": *[_type == "training"][0]{
     title,
-    ${hero}
+    ${hero},
+    ${seo},
   },
-  ${seo},
   ${company},
   ${nav}
 }`
@@ -67,9 +67,9 @@ export const trainingQuery = `{
 export const networkQuery = `{
   "network": *[_type == "network"][0]{
     title,
-    ${hero}
+    ${hero},
+    ${seo}
   },
-  ${seo},
   ${company},
   ${nav}
 }`
@@ -81,6 +81,11 @@ export const resourcesLandingQuery = `{
   },
   "educationalResources": *[_type == "educationalResources"][0..2] {
     title,
+    ${slug}
+  },
+  "events": *[_type == "event"][0..2] {
+    title,
+    eventDate,
     ${slug}
   },
   ${company},
@@ -143,6 +148,7 @@ export const articleSlugQuery = `{
     },
     ${content},
     ${slug},
+    ${seo},
     "next": *[_type == "blog" && slug.current != $slug && (publishedDate > ^.publishedDate)][0] {
       title,
       ${slug}
@@ -163,6 +169,7 @@ export const educationalArticleSlugQuery = `{
     },
     ${content},
     ${slug},
+    ${seo},
     "next": *[_type == "educationalResources" && slug.current != $slug && (publishedDate > ^.publishedDate)][0] {
       title,
       ${slug}
@@ -178,7 +185,8 @@ export const eventSlugQuery = `{
     eventDate,
     ${content},
     ${slug},
-    "next": *[_type == "event" && slug.current != $slug && (publishedDate > ^.publishedDate)][0] {
+    ${seo},
+    "next": *[_type == "event" && slug.current != $slug && (eventDate > ^.eventDate)][0] {
       title,
       ${slug}
     }

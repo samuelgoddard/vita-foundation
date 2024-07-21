@@ -14,7 +14,12 @@ import Link from 'next/link'
 const pageService = new SanityPageService(resourcesLandingQuery)
 
 export default function Resources(initialData) {
-  const { data: { articles, educationalResources, company, nav }  } = pageService.getPreviewHook(initialData)()
+  const { data: { articles, educationalResources, events, company, nav }  } = pageService.getPreviewHook(initialData)()
+
+  const upcomingEvents = events.filter(
+    obj => new Intl.DateTimeFormat('en-GB').format(new Date(obj.eventDate)) >= new Intl.DateTimeFormat('en-GB').format(new Date())
+  );
+
   return (
     <Layout>
       <NextSeo title="Resources" />
@@ -119,13 +124,34 @@ export default function Resources(initialData) {
                 <div className="col-span-1 border border-black/20 p-4 md:p-6 rounded-md scroll-mt-6" id="events">
                   <h2 className="text-2xl leading-[1.6] md:text-2xl md:leading-[1.63] lg:text-3xl xl:text-4xl lg:leading-[1.55] xl:leading-[1.55] letter-wrap letter-wrap--orange">Events</h2>
 
-                  <div className="content mt-4 md:mt-6">
+                  <div className="content mt-4 md:mt-6 mb-6 md:mb-10">
                     <p>Here we hope to keep you up to date with any events run by VITA or other organisations. If you are running an event, whether it&rsquo;s a conference, an online webinar, a presentation, meeting or art exhibition, let us know by emailing <a href="mailto:connect@vita-network.com">connect@vita-network.com</a>.</p>
 
                     <p>We can publicise certain events to our network right here on our website and through social media. We will only publicise events that align with our aim and guiding principles that you can see in About Us.</p>
                   </div>
+                  
+                  {upcomingEvents.length && (
+                    <nav className="mb-4 md:mb-8">
+                      <p className="font-semibold mb-3">Upcoming Events:</p>
+                      
+                      <ul className="border-t border-t-black/20">
+                        {upcomingEvents.map((e,i) => {
+                          const date = new Date(e.eventDate);
 
-                  <Btn href="/events" intent="primary">View Events</Btn>
+                          return (
+                            <li key={i}><Link className="text-red hover:text-black font-semibold py-2.5 border-b flex items-center border-b-black/20 a11y-focus" href={`/events/${e.slug.current}`}>
+                              <span className="block flex-1">{new Intl.DateTimeFormat('en-GB').format(date)} - {e.title}</span>
+                              <span className="w-auto ml-auto pl-6">
+                                <svg className="w-4" viewBox="0 0 15 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M8.268 1.152 7.93.785l-.687.726.34.368 5.128 5.555L.984 7.43H.502L.5 8.464h.483l11.853.003-5.322 5.629-.343.363.678.735.344-.363 6.084-6.436c.19-.2.192-.528.004-.73L8.268 1.151Z" fill="currentColor"/></svg>
+                              </span>
+                            </Link></li>
+                          )
+                        })}
+                      </ul>
+                    </nav>
+                  )}
+
+                  <Btn href="/events" intent="primary">View All Events</Btn>
                 </div>
 
                 <div className="col-span-1 border border-black/20 p-4 md:p-6 rounded-md scroll-mt-6" id="signposting">
@@ -136,8 +162,6 @@ export default function Resources(initialData) {
 
                     <p>Here are some of the key organisations working in the UK at a local, regional, national and international level to end slavery, support survivors and change system-wide policy and practice. If you know an organisation that you would like to be listed below, please contact us at <a href="mailto:connect@vita-network.com">connect@vita-network.com</a>.</p>
                   </div>
-
-                  <Btn href="/" intent="primary">View Signposting</Btn>
                 </div>
               </div>
             </Container>
