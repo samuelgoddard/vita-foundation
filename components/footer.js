@@ -165,7 +165,7 @@ export default function Footer({ aboutNav, trainingNav, networkNav, company }) {
                 }
 
                 return (
-                  <a href={e.url} target="_blank" rel="noopener noreferrer" className="px-2 outline-none focus-visible:outline-current focus-visible:outline-2 focus-visible:outline-dashed focus-visible:outline-offset-5">
+                  <a href={e.url} key={i} target="_blank" rel="noopener noreferrer" className="px-2 outline-none focus-visible:outline-current focus-visible:outline-2 focus-visible:outline-dashed focus-visible:outline-offset-5">
                     { icon ? icon : e.platform}
                   </a>
                 )
