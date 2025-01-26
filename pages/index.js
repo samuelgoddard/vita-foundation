@@ -42,6 +42,7 @@ export default function Home(initialData) {
         aboutNav={nav.aboutNav.contentBlocks}
         trainingNav={nav.trainingNav.trainingTypes}
         network={nav.networkNav}
+        company={company}
       />
       
       <main>
@@ -70,8 +71,8 @@ export default function Home(initialData) {
               )}
 
               <div className="md:flex md:space-x-3 space-y-3 md:space-y-0 ml-auto">
-                <Btn href="/network" intent="secondary" className="w-full block md:inline-block md:w-auto">Vita Network</Btn>
-                <Btn href="/training" intent="secondary" className="w-full block md:inline-block md:w-auto">Vita Training</Btn>
+                <Btn href="/network" intent="secondary" className="w-full block md:inline-block md:w-auto">VITA Network</Btn>
+                <Btn href="/training" intent="secondary" className="w-full block md:inline-block md:w-auto">VITA Training</Btn>
               </div>
             </Container>
           </section>

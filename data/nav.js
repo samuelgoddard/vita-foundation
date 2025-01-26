@@ -3,11 +3,11 @@ export const nav = [{
   href: '/about',
   children: true
 },{
-  label: 'Vita Training',
+  label: 'VITA Training',
   href: '/training',
   children: true
 },{
-  label: 'Vita Network',
+  label: 'VITA Network',
   href: '/network',
   children: false
 },{

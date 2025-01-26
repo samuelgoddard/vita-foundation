@@ -36,6 +36,7 @@ export default function Resource(initialData) {
         aboutNav={nav.aboutNav.contentBlocks}
         trainingNav={nav.trainingNav.trainingTypes}
         network={nav.networkNav}
+        company={company}
       />
 
       <main>

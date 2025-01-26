@@ -25,6 +25,7 @@ export default function Training(initialData) {
         aboutNav={nav.aboutNav.contentBlocks}
         trainingNav={nav.trainingNav.trainingTypes}
         network={nav.networkNav}
+        company={company}
       />
 
       <main>

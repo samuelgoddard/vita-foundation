@@ -29,7 +29,7 @@ const networkNav = `"networkNav": *[_type == "network"][0]{...}`
 
 const nav = `"nav": { ${aboutNav}, ${trainingNav}, ${networkNav} }`
 
-const company = `"company": *[_type == "company"][0]{ emailAddress, socials[] { platform, url }}`
+const company = `"company": *[_type == "company"][0]{ emailAddress, signUpButtonURL, donateButtonURL, signUpcompanyName, registeredCharityNumber, socials[] { platform, url }}`
 
 // External Queries
 export const homeQuery = `{

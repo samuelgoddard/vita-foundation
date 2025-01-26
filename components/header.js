@@ -9,7 +9,7 @@ import Btn from '@/components/btn'
 
 import { nav } from '@/data/nav'
 
-export default function Header({ aboutNav, trainingNav, networkNav }) {
+export default function Header({ aboutNav, trainingNav, networkNav, company }) {
   const [activeNav, setActiveNav] = useState(null)
   const [mobileNavOpen, setMobileNavOpen] = useState(null)
   const { asPath } = useRouter()
@@ -129,8 +129,8 @@ export default function Header({ aboutNav, trainingNav, networkNav }) {
             </ul>
 
             <div className="flex space-x-3 ml-auto">
-              <Btn href="https://mailchi.mp/55437799748c/sign-up" external intent="primary" className="hidden lg:block">Sign up</Btn>
-              <Btn href="https://example.com" external intent="secondary" className="hidden lg:inline-block">Donate</Btn>
+              <Btn href={company.signUpButtonURL} external intent="primary" className="hidden lg:block">Sign up</Btn>
+              <Btn href={company.donateButtonURL} external intent="secondary" className="hidden lg:inline-block">Donate</Btn>
               <button onClick={() => setMobileNavOpen(!mobileNavOpen)} className="bg-red text-white shadow-md text-center px-3 md:px-4 xl:px-5 py-2 text-sm md:text-base rounded-md font-semibold outline-none focus-visible:outline-white focus-visible:outline-2 focus-visible:outline-dashed focus-visible:outline-offset-5 flex items-center lg:hidden"><span className="mr-1">&equiv;</span>Menu</button>
             </div>
           </nav>

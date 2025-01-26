@@ -28,6 +28,7 @@ export default function Blog(initialData) {
         wide
         trainingNav={nav.trainingNav.trainingTypes}
         network={nav.networkNav}
+        company={company}
       />
       
       <main>

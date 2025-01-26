@@ -30,9 +30,10 @@ export default function ModularTeamSection({ sectionTagline, sectionHeading, sec
               <TeamMember
                 key={i}
                 i={i+1}
-                avatar={true}
+                avatar={e.image}
                 name={e.title}
                 title={e.position}
+                bio={e.bio}
               />
             )
           })}

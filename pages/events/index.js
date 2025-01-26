@@ -30,6 +30,7 @@ export default function Events(initialData) {
         wide
         trainingNav={nav.trainingNav.trainingTypes}
         network={nav.networkNav}
+        company={company}
       />
     
       <main>
